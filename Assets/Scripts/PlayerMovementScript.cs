@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector2 moveInput;
+    Rigidbody2D myRigidbody;
+    [SerializeField] float movementSpeed = 4f;
+
     void Start()
     {
-        
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Run();
     }
+
+    void OnMove(InputValue value) 
+    {
+        moveInput = value.Get<Vector2>();
+
+    }
+
+    void Run()
+    {
+        Vector2 playerVelocity = new Vector2(moveInput.x * movementSpeed, myRigidbody.velocity.y);
+        myRigidbody.velocity = playerVelocity;
+    }
+
 }
