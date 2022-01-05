@@ -14615,6 +14615,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3435868056849998358, guid: 02c2a3db5f573524fa55084a57ec3f11, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435868056849998358, guid: 02c2a3db5f573524fa55084a57ec3f11, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3435868056849998359, guid: 02c2a3db5f573524fa55084a57ec3f11, type: 3}
       propertyPath: m_Name
       value: Fusion (Player)
