@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 51913665
+    locked: 0
+  - name: Scene
+    uniqueID: 4168044365
     locked: 0
   - name: Water
     uniqueID: 1077486771

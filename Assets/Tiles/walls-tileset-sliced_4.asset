@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: walls-tileset-sliced_4
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300008, guid: e8eeee797a1eb41268234a175d2079ac, type: 3}
-  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
   m_Transform:
     e00: 1
     e01: 0

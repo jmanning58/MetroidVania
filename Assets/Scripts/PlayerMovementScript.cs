@@ -7,11 +7,13 @@ public class PlayerMovementScript : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 4f;
     [SerializeField] float jumpSpeed = 6f;
+    [SerializeField] float climbSpeed = 4f;
 
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
+    float gravityScaleAtStart;
     
 
     void Start()
@@ -19,12 +21,14 @@ public class PlayerMovementScript : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        gravityScaleAtStart = myRigidbody.gravityScale;
     }
 
     void Update()
     {
         Run();
         FlipSprite();
+        ClimbLadder();
     }
 
     void OnMove(InputValue value) 
@@ -39,7 +43,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (value.isPressed)
         {
-            myRigidbody.velocity += new Vector2 (0f, jumpSpeed);
+            myRigidbody.velocity += new Vector2(0f, jumpSpeed);
         }
     }
 
@@ -60,5 +64,18 @@ public class PlayerMovementScript : MonoBehaviour
         {
             transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
+    }
+
+    void ClimbLadder()
+    {
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myRigidbody.gravityScale = gravityScaleAtStart;
+            return;
+        }
+
+        Vector2 climbVelocity = new Vector2 (myRigidbody.velocity.x, moveInput.y * climbSpeed);
+        myRigidbody.velocity = climbVelocity;
+        myRigidbody.gravityScale = 0f;
     }
 }
