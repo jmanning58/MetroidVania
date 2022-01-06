@@ -29,7 +29,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Run();
         FlipSprite();
-        ClimbLadder();
+        // ClimbLadder();
     }
 
     void OnMove(InputValue value) 
