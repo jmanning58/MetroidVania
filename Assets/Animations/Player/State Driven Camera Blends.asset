@@ -16,7 +16,7 @@ MonoBehaviour:
   - m_From: Run Camera
     m_To: Idle Camera
     m_Blend:
-      m_Style: 2
+      m_Style: 3
       m_Time: 4
       m_CustomCurve:
         serializedVersion: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
   - m_From: Idle Camera
     m_To: Run Camera
     m_Blend:
-      m_Style: 3
+      m_Style: 2
       m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
