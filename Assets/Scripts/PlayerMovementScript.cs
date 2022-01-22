@@ -80,7 +80,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myRigidbody.gravityScale = gravityScaleAtStart;
-            myAnimator.SetBool("isCimbing", false);
+            myAnimator.SetBool("isClimbing", false);
             return;
         }
 
@@ -97,6 +97,8 @@ public class PlayerMovementScript : MonoBehaviour
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
             isAlive = false;
+            myAnimator.SetTrigger("Dying");
+            
         }
     }
 }
