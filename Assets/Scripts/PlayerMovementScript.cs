@@ -14,8 +14,9 @@ public class PlayerMovementScript : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
+    GameObject thePlayer;
+
     float gravityScaleAtStart;
-    
     bool isAlive = true;
     
 
@@ -25,6 +26,7 @@ public class PlayerMovementScript : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
+        thePlayer = GameObject.FindWithTag("Player");
         gravityScaleAtStart = myRigidbody.gravityScale;
     }
 
@@ -41,7 +43,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if (!isAlive) { return; }
         moveInput = value.Get<Vector2>();
-
     }
 
     void OnJump(InputValue value)
@@ -51,8 +52,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (value.isPressed)
         {
-            myRigidbody.velocity += new Vector2(0f, jumpSpeed);
-            
+            myRigidbody.velocity += new Vector2(0f, jumpSpeed);   
         }
     }
 
@@ -96,9 +96,10 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
-            isAlive = false;
+            isAlive = false; 
             myAnimator.SetTrigger("Dying");
-            
+            // Currently, deactivates Player with no animation
+            thePlayer.SetActive(false);
         }
     }
 }
